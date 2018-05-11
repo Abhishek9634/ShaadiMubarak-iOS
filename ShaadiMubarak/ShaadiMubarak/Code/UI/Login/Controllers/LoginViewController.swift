@@ -18,5 +18,8 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func loginAction(_ sender: Any) {
+        AppDelegate.shared.showRootView()
+    }
 }
 
