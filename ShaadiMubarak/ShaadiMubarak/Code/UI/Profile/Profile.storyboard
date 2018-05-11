@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Profile View Controller-->
         <scene sceneID="gfA-Gm-89t">
@@ -129,11 +134,13 @@
             </objects>
             <point key="canvasLocation" x="1612" y="150.67466266866569"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
         <scene sceneID="KG2-q4-MyS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p6g-Kk-iuO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="511-rP-Ziv"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SZe-3G-iXK">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

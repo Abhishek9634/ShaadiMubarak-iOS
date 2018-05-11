@@ -31,7 +31,7 @@
         <scene sceneID="lRP-GP-9Tt">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home" id="SIt-O2-bO1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="Tc9-C3-u1U"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="Tc9-C3-u1U"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkQ-AP-8Cm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +41,7 @@
         <scene sceneID="z2h-96-I0M">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="dpL-0x-uFI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="PH3-5u-XSR"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="PH3-5u-XSR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5i-jX-rM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
