@@ -117,16 +117,8 @@
 			children = (
 				464FC9BE20A5D22500A6272B /* Login.storyboard */,
 				464FC9D220A5D35000A6272B /* Controllers */,
-				464FC9D120A5D34300A6272B /* Views */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		464FC9D120A5D34300A6272B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		464FC9D220A5D35000A6272B /* Controllers */ = {

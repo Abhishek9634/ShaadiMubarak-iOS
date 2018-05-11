@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // REQUESTING USER LOCATION
-        LocationManager.shared.requestForAuthorization()
+//        LocationManager.shared.requestForAuthorization()
         
         
         return true
