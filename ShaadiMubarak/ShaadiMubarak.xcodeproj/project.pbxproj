@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		464FC9BB20A5D22500A6272B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464FC9BA20A5D22500A6272B /* AppDelegate.swift */; };
-		464FC9BD20A5D22500A6272B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464FC9BC20A5D22500A6272B /* ViewController.swift */; };
-		464FC9C020A5D22500A6272B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464FC9BE20A5D22500A6272B /* Main.storyboard */; };
+		464FC9BD20A5D22500A6272B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464FC9BC20A5D22500A6272B /* LoginViewController.swift */; };
+		464FC9C020A5D22500A6272B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464FC9BE20A5D22500A6272B /* Login.storyboard */; };
 		464FC9C220A5D22600A6272B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464FC9C120A5D22600A6272B /* Assets.xcassets */; };
 		464FC9C520A5D22600A6272B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464FC9C320A5D22600A6272B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -17,8 +17,8 @@
 /* Begin PBXFileReference section */
 		464FC9B720A5D22500A6272B /* ShaadiMubarak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaadiMubarak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		464FC9BA20A5D22500A6272B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		464FC9BC20A5D22500A6272B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		464FC9BF20A5D22500A6272B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		464FC9BC20A5D22500A6272B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		464FC9BF20A5D22500A6272B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		464FC9C120A5D22600A6272B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		464FC9C420A5D22600A6272B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		464FC9C620A5D22600A6272B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,14 +54,70 @@
 		464FC9B920A5D22500A6272B /* ShaadiMubarak */ = {
 			isa = PBXGroup;
 			children = (
-				464FC9BA20A5D22500A6272B /* AppDelegate.swift */,
-				464FC9BC20A5D22500A6272B /* ViewController.swift */,
-				464FC9BE20A5D22500A6272B /* Main.storyboard */,
+				464FC9CD20A5D2B800A6272B /* Resources */,
+				464FC9CC20A5D2A700A6272B /* Code */,
+			);
+			path = ShaadiMubarak;
+			sourceTree = "<group>";
+		};
+		464FC9CC20A5D2A700A6272B /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				464FC9D020A5D30400A6272B /* Login */,
+				464FC9CF20A5D2F200A6272B /* AppDelegate */,
+				464FC9CE20A5D2D800A6272B /* SupportFiles */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		464FC9CD20A5D2B800A6272B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				464FC9C120A5D22600A6272B /* Assets.xcassets */,
 				464FC9C320A5D22600A6272B /* LaunchScreen.storyboard */,
 				464FC9C620A5D22600A6272B /* Info.plist */,
 			);
-			path = ShaadiMubarak;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		464FC9CE20A5D2D800A6272B /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		464FC9CF20A5D2F200A6272B /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				464FC9BA20A5D22500A6272B /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		464FC9D020A5D30400A6272B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				464FC9BE20A5D22500A6272B /* Login.storyboard */,
+				464FC9D220A5D35000A6272B /* Controllers */,
+				464FC9D120A5D34300A6272B /* Views */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		464FC9D120A5D34300A6272B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		464FC9D220A5D35000A6272B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				464FC9BC20A5D22500A6272B /* LoginViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +181,7 @@
 			files = (
 				464FC9C520A5D22600A6272B /* LaunchScreen.storyboard in Resources */,
 				464FC9C220A5D22600A6272B /* Assets.xcassets in Resources */,
-				464FC9C020A5D22500A6272B /* Main.storyboard in Resources */,
+				464FC9C020A5D22500A6272B /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				464FC9BD20A5D22500A6272B /* ViewController.swift in Sources */,
+				464FC9BD20A5D22500A6272B /* LoginViewController.swift in Sources */,
 				464FC9BB20A5D22500A6272B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,12 +200,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		464FC9BE20A5D22500A6272B /* Main.storyboard */ = {
+		464FC9BE20A5D22500A6272B /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				464FC9BF20A5D22500A6272B /* Base */,
 			);
-			name = Main.storyboard;
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 		464FC9C320A5D22600A6272B /* LaunchScreen.storyboard */ = {
@@ -282,13 +338,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KC9N23CAXG;
-				INFOPLIST_FILE = ShaadiMubarak/Info.plist;
+				INFOPLIST_FILE = ShaadiMubarak/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Abhishek.ShaadiMubarak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -298,13 +354,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KC9N23CAXG;
-				INFOPLIST_FILE = ShaadiMubarak/Info.plist;
+				INFOPLIST_FILE = ShaadiMubarak/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Abhishek.ShaadiMubarak;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
