@@ -12,10 +12,10 @@ class PlaceDetailViewController: UITableViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var imgView: ImageView!
     
     var viewModel: PlaceItem!
-    
+
     private var mapFrame: CGRect {
         return self.imgView.bounds
     }
@@ -35,6 +35,9 @@ extension PlaceDetailViewController {
     func populateData() {
         self.nameLabel.text = self.viewModel.mapItem.name
         self.addressLabel.text = self.viewModel.address
+        let urlString = "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=\(Int(self.mapFrame.size.width))x\(Int(self.mapFrame.size.height))&markers=\(self.viewModel.mapItem.placemark.coordinate.latitude),\(self.viewModel.mapItem.placemark.coordinate.longitude)&sensor=false"
+        print("IMAGE URL : \(urlString)")
+        self.imgView.setImageFromUrl(urlString: urlString)
         self.tableView.reloadData()
     }
     

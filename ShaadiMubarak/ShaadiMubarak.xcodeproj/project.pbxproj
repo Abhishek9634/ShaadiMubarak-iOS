@@ -26,9 +26,12 @@
 		46E5725320A6C501002A839C /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E5725120A6C501002A839C /* PlaceTableViewCell.swift */; };
 		46E5725420A6C501002A839C /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E5725220A6C501002A839C /* PlaceTableViewCell.xib */; };
 		46E5725620A6D1B6002A839C /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E5725520A6D1B6002A839C /* PlaceDetailViewController.swift */; };
+		46E5725920A6E661002A839C /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E5725820A6E661002A839C /* ImageView.swift */; };
+		F22738FCDFF37800E96FDEDD /* Pods_ShaadiMubarak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0176380CDD882BAA0E00894A /* Pods_ShaadiMubarak.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0176380CDD882BAA0E00894A /* Pods_ShaadiMubarak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShaadiMubarak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		464FC9B720A5D22500A6272B /* ShaadiMubarak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShaadiMubarak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		464FC9BA20A5D22500A6272B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		464FC9BC20A5D22500A6272B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +53,9 @@
 		46E5725120A6C501002A839C /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		46E5725220A6C501002A839C /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
 		46E5725520A6D1B6002A839C /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		46E5725820A6E661002A839C /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		AAA5BBBDE1D3D2719057C28D /* Pods-ShaadiMubarak.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShaadiMubarak.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShaadiMubarak/Pods-ShaadiMubarak.debug.xcconfig"; sourceTree = "<group>"; };
+		EBC1E5303D7F16973649FEE1 /* Pods-ShaadiMubarak.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShaadiMubarak.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShaadiMubarak/Pods-ShaadiMubarak.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,17 +63,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F22738FCDFF37800E96FDEDD /* Pods_ShaadiMubarak.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2075DC9B4B42EA295317F7EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0176380CDD882BAA0E00894A /* Pods_ShaadiMubarak.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		464FC9AE20A5D22500A6272B = {
 			isa = PBXGroup;
 			children = (
 				464FC9B920A5D22500A6272B /* ShaadiMubarak */,
 				464FC9B820A5D22500A6272B /* Products */,
+				BC931063EB3986BE3BC2A47C /* Pods */,
+				2075DC9B4B42EA295317F7EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				464FC9EB20A5F2EA00A6272B /* UIViewController+RootView.swift */,
+				46E5725720A6E661002A839C /* ImageView */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +276,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		46E5725720A6E661002A839C /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				46E5725820A6E661002A839C /* ImageView.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		BC931063EB3986BE3BC2A47C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AAA5BBBDE1D3D2719057C28D /* Pods-ShaadiMubarak.debug.xcconfig */,
+				EBC1E5303D7F16973649FEE1 /* Pods-ShaadiMubarak.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,9 +300,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 464FC9C920A5D22600A6272B /* Build configuration list for PBXNativeTarget "ShaadiMubarak" */;
 			buildPhases = (
+				B673CEAA9B02712AEADCF7C4 /* [CP] Check Pods Manifest.lock */,
 				464FC9B320A5D22500A6272B /* Sources */,
 				464FC9B420A5D22500A6272B /* Frameworks */,
 				464FC9B520A5D22500A6272B /* Resources */,
+				A790B5F0FF4548F3B2A3F1A3 /* [CP] Embed Pods Frameworks */,
+				CEED1892BB04B8E4DBC07E5C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -330,11 +368,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A790B5F0FF4548F3B2A3F1A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShaadiMubarak/Pods-ShaadiMubarak-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShaadiMubarak/Pods-ShaadiMubarak-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B673CEAA9B02712AEADCF7C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShaadiMubarak-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEED1892BB04B8E4DBC07E5C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShaadiMubarak/Pods-ShaadiMubarak-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		464FC9B320A5D22500A6272B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E5725920A6E661002A839C /* ImageView.swift in Sources */,
 				464FC9BD20A5D22500A6272B /* LoginViewController.swift in Sources */,
 				46E5724F20A68335002A839C /* HomeCollectionCell.swift in Sources */,
 				464FC9BB20A5D22500A6272B /* AppDelegate.swift in Sources */,
@@ -486,6 +579,7 @@
 		};
 		464FC9CA20A5D22600A6272B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAA5BBBDE1D3D2719057C28D /* Pods-ShaadiMubarak.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -502,6 +596,7 @@
 		};
 		464FC9CB20A5D22600A6272B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBC1E5303D7F16973649FEE1 /* Pods-ShaadiMubarak.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
