@@ -20,6 +20,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="30C-Ib-rKb">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <viewLayoutGuide key="safeArea" id="OZu-rd-r4p"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Es6-dZ-zY2">
                                 <rect key="frame" x="310" y="553" width="50" height="50"/>
@@ -32,26 +33,48 @@
                                     <action selector="myLocationAction:" destination="YgD-Xi-cHP" eventType="touchDown" id="wkP-2h-TNM"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HfY-gK-Ksi">
+                                <rect key="frame" x="20" y="84" width="285" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2j-v6-BAT">
+                                <rect key="frame" x="310" y="84" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="fUS-rl-vR7"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="searchAction:" destination="YgD-Xi-cHP" eventType="touchDown" id="6Iq-I7-8z0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4dY-Fp-puK" firstAttribute="trailing" secondItem="Es6-dZ-zY2" secondAttribute="trailing" constant="15" id="8w0-to-GYa"/>
+                            <constraint firstItem="I2j-v6-BAT" firstAttribute="leading" secondItem="HfY-gK-Ksi" secondAttribute="trailing" constant="5" id="D3d-3c-4ww"/>
+                            <constraint firstItem="4dY-Fp-puK" firstAttribute="trailing" secondItem="I2j-v6-BAT" secondAttribute="trailing" constant="15" id="G0N-IE-m1m"/>
+                            <constraint firstItem="HfY-gK-Ksi" firstAttribute="top" secondItem="4dY-Fp-puK" secondAttribute="top" constant="20" id="I9W-Gu-9O3"/>
+                            <constraint firstItem="HfY-gK-Ksi" firstAttribute="leading" secondItem="4dY-Fp-puK" secondAttribute="leading" constant="20" id="JsY-Vi-XcX"/>
                             <constraint firstItem="4dY-Fp-puK" firstAttribute="bottom" secondItem="Es6-dZ-zY2" secondAttribute="bottom" constant="15" id="L8J-xd-yfA"/>
                             <constraint firstItem="30C-Ib-rKb" firstAttribute="leading" secondItem="4dY-Fp-puK" secondAttribute="leading" id="br2-1Z-DMc"/>
                             <constraint firstItem="30C-Ib-rKb" firstAttribute="bottom" secondItem="4dY-Fp-puK" secondAttribute="bottom" id="cUx-b5-inq"/>
                             <constraint firstItem="30C-Ib-rKb" firstAttribute="top" secondItem="4dY-Fp-puK" secondAttribute="top" id="gTs-CT-6d6"/>
                             <constraint firstItem="30C-Ib-rKb" firstAttribute="trailing" secondItem="4dY-Fp-puK" secondAttribute="trailing" id="m7P-rf-EKj"/>
+                            <constraint firstItem="I2j-v6-BAT" firstAttribute="centerY" secondItem="HfY-gK-Ksi" secondAttribute="centerY" id="pCF-rd-E3e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4dY-Fp-puK"/>
                     </view>
                     <navigationItem key="navigationItem" id="fGd-jf-TNh"/>
                     <connections>
                         <outlet property="mapView" destination="30C-Ib-rKb" id="qcu-4K-jet"/>
+                        <outlet property="searchTextField" destination="HfY-gK-Ksi" id="I28-km-oW4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ruu-Gt-hFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="558" y="209"/>
+            <point key="canvasLocation" x="893.60000000000002" y="208.24587706146929"/>
         </scene>
         <!--Search-->
         <scene sceneID="FCz-sJ-r1O">

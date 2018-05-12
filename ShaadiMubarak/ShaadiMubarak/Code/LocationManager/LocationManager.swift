@@ -28,11 +28,15 @@ class LocationManager: NSObject {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        self.startUpdatingLocation()
     }
     
     func stopUpdatingLocation() {
         self.locationManager.stopUpdatingLocation()
+    }
+    
+    func startUpdatingLocation() {
+        self.locationManager.startUpdatingLocation()
     }
 }
 

@@ -12,13 +12,14 @@ import MapKit
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     private let regionRadius: CLLocationDistance = 1000
     private var currentLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupMapView()
+        self.setupView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,13 +33,28 @@ class SearchViewController: UIViewController {
                                                                   self.regionRadius)
         self.mapView.setRegion(coordinateRegion, animated: true)
     }
+    
+    @IBAction func searchAction(_ sender: Any) {
+        guard let searchText = self.searchTextField.text else { return }
+        self.searchPlaces(searchText: searchText)
+        self.searchTextField.resignFirstResponder()
+    }
 }
 
 extension SearchViewController {
     
-    func setupMapView() {
+    func setupView() {
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
+        self.searchTextField.delegate = self
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
@@ -79,4 +95,36 @@ extension SearchViewController: MKMapViewDelegate {
         }
         
     }
+    
+    func searchPlaces(searchText: String) {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = searchText
+        request.region = self.mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { response, error in
+            print("Search Response : \(String(describing: response))")
+            print("Search API Error : \(error.debugDescription)")
+            guard let response = response else { return }
+            print("Map Items : \(response.mapItems)")
+            self.setMarksAndAnnotations(mapItems: response.mapItems)
+        }
+    }
+    
+    func setMarksAndAnnotations(mapItems: [MKMapItem]) {
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        mapItems.forEach {
+            let annotation = MKPointAnnotation()
+            let placemark = $0.placemark
+            annotation.coordinate = placemark.coordinate
+            annotation.title = placemark.name
+            if let city = placemark.locality, let state = placemark.administrativeArea {
+                annotation.subtitle = "\(city) \(state)"
+            }
+            self.mapView.addAnnotation(annotation)
+            let region = MKCoordinateRegionMake(placemark.coordinate, span)
+            self.mapView.setRegion(region, animated: true)
+        }
+    }
 }
+

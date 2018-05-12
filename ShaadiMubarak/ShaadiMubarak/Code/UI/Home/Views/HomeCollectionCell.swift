@@ -11,6 +11,9 @@ import UIKit
 struct HomeCellModel {
     var title: String
     var image: String
+    var keyword: String {
+        return ""
+    }
 }
 
 class HomeCollectionCell: UICollectionViewCell {
