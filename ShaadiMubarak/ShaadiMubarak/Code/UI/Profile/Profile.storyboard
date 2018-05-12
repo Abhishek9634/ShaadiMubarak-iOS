@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="gfA-Gm-89t">
             <objects>
                 <tableViewController storyboardIdentifier="ProfileViewController" id="sEh-jQ-tzI" customClass="ProfileViewController" customModule="ShaadiMubarak" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,7 +128,7 @@
                             <outlet property="delegate" destination="sEh-jQ-tzI" id="poD-LX-bTq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aZI-lD-I1B"/>
+                    <navigationItem key="navigationItem" title="Profile" id="aZI-lD-I1B"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTk-Pz-mUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -138,7 +138,7 @@
         <scene sceneID="KG2-q4-MyS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p6g-Kk-iuO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="511-rP-Ziv"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profilefilled" id="511-rP-Ziv"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SZe-3G-iXK">
@@ -156,6 +156,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="profile" width="24" height="24"/>
+        <image name="profilefilled" width="24" height="24"/>
         <image name="user" width="512" height="512"/>
     </resources>
 </document>

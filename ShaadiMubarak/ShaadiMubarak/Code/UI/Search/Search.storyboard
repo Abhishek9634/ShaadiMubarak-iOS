@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="0Sb-Nd-9w7">
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" id="YgD-Xi-cHP" customClass="SearchViewController" customModule="ShaadiMubarak" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,7 +66,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4dY-Fp-puK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fGd-jf-TNh"/>
+                    <navigationItem key="navigationItem" title="Search" id="fGd-jf-TNh"/>
                     <connections>
                         <outlet property="mapView" destination="30C-Ib-rKb" id="qcu-4K-jet"/>
                         <outlet property="searchTextField" destination="HfY-gK-Ksi" id="I28-km-oW4"/>
@@ -80,7 +80,7 @@
         <scene sceneID="FCz-sJ-r1O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j4H-W1-mKL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="zcW-jt-3Cf"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" selectedImage="searchfilled" id="zcW-jt-3Cf"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8oj-cA-hNZ">
@@ -99,5 +99,7 @@
     </scenes>
     <resources>
         <image name="ico-mylocation" width="51" height="51"/>
+        <image name="search" width="24" height="24"/>
+        <image name="searchfilled" width="24" height="24"/>
     </resources>
 </document>
