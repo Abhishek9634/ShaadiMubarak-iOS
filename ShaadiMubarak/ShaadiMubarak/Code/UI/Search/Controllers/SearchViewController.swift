@@ -122,6 +122,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = self.cellItems[indexPath.row]
         self.mapView.selectAnnotation(model.annotation, animated: true)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(model.mapItem.placemark.coordinate, span)
+        self.mapView.setRegion(region, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
