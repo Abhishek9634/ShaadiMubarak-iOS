@@ -9,17 +9,31 @@
 import UIKit
 import MapKit
 
+class PlaceItem {
+    
+    var mapItem: MKMapItem
+    var annotation: MKAnnotation
+    
+    init(mapItem: MKMapItem, annotation: MKAnnotation) {
+        self.mapItem = mapItem
+        self.annotation = annotation
+    }
+}
+
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     private let regionRadius: CLLocationDistance = 1000
     private var currentLocation: CLLocation?
+    private var cellItems: [PlaceItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
+        self.setupTableView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,38 +76,6 @@ extension SearchViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         self.currentLocation = userLocation.location
-        
-        // TEST
-        //        self.reverseGeoCoding(location: userLocation.location!)
-    }
-    
-    func reverseGeoCoding(location: CLLocation) {
-        
-        let geocoder = CLGeocoder()
-        //        let userLocation = self.mapView.userLocation.location // get directly from map
-        
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            
-            if let error = error {
-                print("Geo Coding Error: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let placemarks = placemarks,
-                let firstPlacemark = placemarks.first,
-                let addressDictionary = firstPlacemark.addressDictionary else { return }
-            //            let street = addressDictionary["Street"]
-            //            let city = addressDictionary["City"]
-            //            let state = addressDictionary["State"]
-            //            let zip = addressDictionary["ZIP"]
-            print(addressDictionary.description)
-            if let array = addressDictionary["FormattedAddressLines"] as? [Any] {
-                let address = array.map { "\($0)" }.joined(separator: ",\n")
-                print("Address : \(address)")
-            }
-            
-        }
-        
     }
     
     func searchPlaces(searchText: String) {
@@ -106,25 +88,50 @@ extension SearchViewController: MKMapViewDelegate {
             print("Search API Error : \(error.debugDescription)")
             guard let response = response else { return }
             print("Map Items : \(response.mapItems)")
-            self.setMarksAndAnnotations(mapItems: response.mapItems)
+            self.populateCellModels(mapItems: response.mapItems)
         }
     }
     
-    func setMarksAndAnnotations(mapItems: [MKMapItem]) {
-        self.mapView.removeAnnotations(self.mapView.annotations)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        mapItems.forEach {
+    func populateCellModels(mapItems: [MKMapItem]) {
+        self.cellItems = mapItems.map {
             let annotation = MKPointAnnotation()
             let placemark = $0.placemark
             annotation.coordinate = placemark.coordinate
             annotation.title = placemark.name
             if let city = placemark.locality, let state = placemark.administrativeArea {
-                annotation.subtitle = "\(city) \(state)"
+                annotation.subtitle = "\(city) \n \(state)"
             }
             self.mapView.addAnnotation(annotation)
-            let region = MKCoordinateRegionMake(placemark.coordinate, span)
-            self.mapView.setRegion(region, animated: true)
+            return PlaceItem(mapItem: $0, annotation: annotation)
         }
+        self.tableView.reloadData()
+    }
+}
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func setupTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.register(UINib(nibName: "PlaceTableViewCell", bundle: nil),
+                                forCellReuseIdentifier: "PlaceTableViewCell")
+        self.tableView.estimatedRowHeight = 44.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.cellItems[indexPath.row]
+        self.mapView.selectAnnotation(model.annotation, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.cellItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceTableViewCell") as! PlaceTableViewCell
+        cell.item = self.cellItems[indexPath.row]
+        return cell
     }
 }
 
