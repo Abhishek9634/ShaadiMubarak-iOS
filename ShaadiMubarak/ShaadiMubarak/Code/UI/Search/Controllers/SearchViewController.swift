@@ -13,6 +13,14 @@ class PlaceItem {
     
     var mapItem: MKMapItem
     var annotation: MKAnnotation
+    var address: String? {
+        if let addressDictionary = self.mapItem.placemark.addressDictionary,
+            let array = addressDictionary["FormattedAddressLines"] as? [Any] {
+            let address = array.map { "\($0)" }.joined(separator: ",\n")
+            return address
+        }
+        return nil
+    }
     
     init(mapItem: MKMapItem, annotation: MKAnnotation) {
         self.mapItem = mapItem
@@ -29,6 +37,10 @@ class SearchViewController: UIViewController {
     private let regionRadius: CLLocationDistance = 1000
     private var currentLocation: CLLocation?
     private var cellItems: [PlaceItem] = []
+    
+    private struct Segue {
+        static let placeDetail = "PlaceDetailViewControllerSegueID"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +67,6 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController {
-    
-    func setupView() {
-        self.mapView.delegate = self
-        self.mapView.showsUserLocation = true
-        self.searchTextField.delegate = self
-    }
-}
-
 extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -73,6 +76,12 @@ extension SearchViewController: UITextFieldDelegate {
 }
 
 extension SearchViewController: MKMapViewDelegate {
+    
+    func setupView() {
+        self.mapView.delegate = self
+        self.mapView.showsUserLocation = true
+        self.searchTextField.delegate = self
+    }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         self.currentLocation = userLocation.location
@@ -99,7 +108,7 @@ extension SearchViewController: MKMapViewDelegate {
             annotation.coordinate = placemark.coordinate
             annotation.title = placemark.name
             if let city = placemark.locality, let state = placemark.administrativeArea {
-                annotation.subtitle = "\(city) \n \(state)"
+                annotation.subtitle = "\(city) \(state)"
             }
             self.mapView.addAnnotation(annotation)
             return PlaceItem(mapItem: $0, annotation: annotation)
@@ -133,8 +142,25 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceTableViewCell") as! PlaceTableViewCell
+        cell.delegate = self
         cell.item = self.cellItems[indexPath.row]
         return cell
+    }
+}
+
+extension SearchViewController: PlaceTableViewCellDelegate {
+    
+    func openPlaceDetail(from cell: PlaceTableViewCell) {
+        self.performSegue(withIdentifier: Segue.placeDetail, sender: cell.item)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch(segue.identifier, segue.destination, sender) {
+        case (Segue.placeDetail?, let vc as PlaceDetailViewController, let model as PlaceItem):
+            vc.viewModel = model
+        default: break
+        }
+        super.prepare(for: segue, sender: sender)
     }
 }
 

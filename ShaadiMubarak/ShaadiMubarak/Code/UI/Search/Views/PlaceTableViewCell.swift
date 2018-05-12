@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol PlaceTableViewCellDelegate: class {
+    func openPlaceDetail(from cell: PlaceTableViewCell)
+}
+
 class PlaceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    
+    weak var delegate: PlaceTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +36,10 @@ class PlaceTableViewCell: UITableViewCell {
         if let model = item {
             self.titleLabel.text = model.mapItem.name
         }
+    }
+    
+    @IBAction func openPlaceDetailAction(_ sender: UIButton) {
+        self.delegate?.openPlaceDetail(from: self)
     }
     
 }

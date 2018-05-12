@@ -25,6 +25,7 @@
 		46E5724F20A68335002A839C /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E5724E20A68335002A839C /* HomeCollectionCell.swift */; };
 		46E5725320A6C501002A839C /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E5725120A6C501002A839C /* PlaceTableViewCell.swift */; };
 		46E5725420A6C501002A839C /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E5725220A6C501002A839C /* PlaceTableViewCell.xib */; };
+		46E5725620A6D1B6002A839C /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E5725520A6D1B6002A839C /* PlaceDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		46E5724E20A68335002A839C /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		46E5725120A6C501002A839C /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		46E5725220A6C501002A839C /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
+		46E5725520A6D1B6002A839C /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				46E5724820A67D27002A839C /* SearchViewController.swift */,
+				46E5725520A6D1B6002A839C /* PlaceDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				464FC9BB20A5D22500A6272B /* AppDelegate.swift in Sources */,
 				46E5724920A67D27002A839C /* SearchViewController.swift in Sources */,
 				464FC9E420A5E6E800A6272B /* ProfileViewController.swift in Sources */,
+				46E5725620A6D1B6002A839C /* PlaceDetailViewController.swift in Sources */,
 				464FC9DC20A5DE5900A6272B /* RootViewController.swift in Sources */,
 				464FC9D520A5D45100A6272B /* LocationManager.swift in Sources */,
 				464FC9EC20A5F2EA00A6272B /* UIViewController+RootView.swift in Sources */,
