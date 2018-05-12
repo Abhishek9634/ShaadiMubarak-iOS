@@ -7,76 +7,56 @@
 //
 
 import UIKit
-import MapKit
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    private let regionRadius: CLLocationDistance = 1000
-    private var currentLocation: CLLocation?
+    var cellItems: [HomeCellModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupMapView()
+        self.setupView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    @IBAction func myLocationAction(_ sender: Any) {
-        guard let currentLocation = self.currentLocation else { return }
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate,
-                                                                  self.regionRadius,
-                                                                  self.regionRadius)
-        self.mapView.setRegion(coordinateRegion, animated: true)
-    }
 }
 
-extension HomeViewController {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func setupMapView() {
-        self.mapView.delegate = self
-        self.mapView.showsUserLocation = true
-    }
-}
-
-extension HomeViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        self.currentLocation = userLocation.location
-        
-        // TEST
-//        self.reverseGeoCoding(location: userLocation.location!)
+    func setupView() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.cellItems = [
+            HomeCellModel(title: "Wedding Hall", image: ""), HomeCellModel(title: "Catering", image: ""),
+            HomeCellModel(title: "Photographer", image: ""), HomeCellModel(title: "Liquor Shop", image: ""),
+            HomeCellModel(title: "Band", image: ""), HomeCellModel(title: "Beauty Parlour/Saloon", image: ""),
+            HomeCellModel(title: "Mehndi", image: ""), HomeCellModel(title: "Flowers", image: ""),
+            HomeCellModel(title: "Vegetables", image: ""), HomeCellModel(title: "Grocery", image: "")
+        ]
     }
     
-    func reverseGeoCoding(location: CLLocation) {
-        
-        let geocoder = CLGeocoder()
-//        let userLocation = self.mapView.userLocation.location // get directly from map
-        
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            
-            if let error = error {
-                print("Geo Coding Error: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let placemarks = placemarks,
-            let firstPlacemark = placemarks.first,
-            let addressDictionary = firstPlacemark.addressDictionary else { return }
-//            let street = addressDictionary["Street"]
-//            let city = addressDictionary["City"]
-//            let state = addressDictionary["State"]
-//            let zip = addressDictionary["ZIP"]
-            print(addressDictionary.description)
-            if let array = addressDictionary["FormattedAddressLines"] as? [Any] {
-                let address = array.map { "\($0)" }.joined(separator: ",\n")
-                print("Address : \(address)")
-            }
-            
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.cellItems.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell",
+                                                      for: indexPath) as! HomeCollectionCell
+        cell.item = self.cellItems[indexPath.row]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.size.width - 45)/3
+        let height = width + 35
+        return CGSize(width: width, height: height)
+    }
+    
 }
