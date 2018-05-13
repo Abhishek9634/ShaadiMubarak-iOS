@@ -21,6 +21,7 @@ class LocationManager: NSObject {
     private override init() { }
     
     private let locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
     
     weak var delegate: LocationManagerDelegate?
     
@@ -44,6 +45,7 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("LocationManager didUpdateLocations : \(locations)")
+        self.currentLocation = locations.last
         self.delegate?.locationManager(manager, didUpdateLocations: locations)
     }
     

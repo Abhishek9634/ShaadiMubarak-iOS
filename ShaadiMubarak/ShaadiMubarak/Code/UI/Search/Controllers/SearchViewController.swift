@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let regionRadius: CLLocationDistance = 1000
-    private var currentLocation: CLLocation?
+    private var currentLocation: CLLocation? = LocationManager.shared.currentLocation
     private var cellItems: [PlaceItem] = []
     
     private struct Segue {
@@ -48,16 +48,17 @@ class SearchViewController: UIViewController {
         self.setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setCurrentRegion()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     @IBAction func myLocationAction(_ sender: Any) {
-        guard let currentLocation = self.currentLocation else { return }
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate,
-                                                                  self.regionRadius,
-                                                                  self.regionRadius)
-        self.mapView.setRegion(coordinateRegion, animated: true)
+       self.setCurrentRegion()
     }
     
     @IBAction func searchAction(_ sender: Any) {
@@ -83,6 +84,15 @@ extension SearchViewController: MKMapViewDelegate {
         self.searchTextField.delegate = self
     }
     
+    // WILL SET USER CURRENT LOCATION AS REGION
+    func setCurrentRegion() {
+        guard let currentLocation = self.currentLocation else { return }
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate,
+                                                                  self.regionRadius,
+                                                                  self.regionRadius)
+        self.mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         self.currentLocation = userLocation.location
     }
@@ -102,6 +112,7 @@ extension SearchViewController: MKMapViewDelegate {
     }
     
     func populateCellModels(mapItems: [MKMapItem]) {
+        self.mapView.removeAnnotations(self.mapView.annotations)
         self.cellItems = mapItems.map {
             let annotation = MKPointAnnotation()
             let placemark = $0.placemark
