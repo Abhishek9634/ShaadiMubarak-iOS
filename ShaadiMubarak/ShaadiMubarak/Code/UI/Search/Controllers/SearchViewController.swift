@@ -33,7 +33,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var listHeightConstraint: NSLayoutConstraint!
     
     private let regionRadius: CLLocationDistance = 6000
     private var currentLocation: CLLocation? = LocationManager.shared.currentLocation
@@ -73,7 +73,7 @@ class SearchViewController: UIViewController {
     }
     
     private func animateTableView() {
-        self.tableHeightConstraint.constant = (self.tableHeightConstraint.constant > 40) ? 40 : 240
+        self.listHeightConstraint.constant = (self.listHeightConstraint.constant > 40) ? 40 : 240
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
