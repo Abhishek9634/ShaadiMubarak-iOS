@@ -33,8 +33,9 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     
-    private let regionRadius: CLLocationDistance = 1000
+    private let regionRadius: CLLocationDistance = 6000
     private var currentLocation: CLLocation? = LocationManager.shared.currentLocation
     private var cellItems: [PlaceItem] = []
     
@@ -58,13 +59,24 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func myLocationAction(_ sender: Any) {
-       self.setCurrentRegion()
+        self.setCurrentRegion()
     }
     
     @IBAction func searchAction(_ sender: Any) {
         guard let searchText = self.searchTextField.text else { return }
         self.searchPlaces(searchText: searchText)
         self.searchTextField.resignFirstResponder()
+    }
+    
+    @IBAction func headerAction(_ sender: Any) {
+        self.animateTableView()
+    }
+    
+    private func animateTableView() {
+        self.tableHeightConstraint.constant = (self.tableHeightConstraint.constant > 40) ? 40 : 240
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -87,10 +99,10 @@ extension SearchViewController: MKMapViewDelegate {
     // WILL SET USER CURRENT LOCATION AS REGION
     func setCurrentRegion() {
         guard let currentLocation = self.currentLocation else { return }
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate,
-                                                                  self.regionRadius,
-                                                                  self.regionRadius)
-        self.mapView.setRegion(coordinateRegion, animated: true)
+        let region = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate,
+                                                        self.regionRadius,
+                                                        self.regionRadius)
+        self.mapView.setRegion(region, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
@@ -125,6 +137,9 @@ extension SearchViewController: MKMapViewDelegate {
             return PlaceItem(mapItem: $0, annotation: annotation)
         }
         self.tableView.reloadData()
+        if mapItems.count > 0 {
+            self.animateTableView()
+        }
     }
 }
 

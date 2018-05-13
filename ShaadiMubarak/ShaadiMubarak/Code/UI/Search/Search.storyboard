@@ -29,23 +29,38 @@
                                 <viewLayoutGuide key="safeArea" id="OZu-rd-r4p"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="82L-JQ-WWk" userLabel="Place Table View">
-                                <rect key="frame" x="20" y="438" width="335" height="180"/>
+                                <rect key="frame" x="0.0" y="578" width="375" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="VGJ-0K-Plr"/>
+                                    <constraint firstAttribute="height" constant="40" id="VGJ-0K-Plr"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="zY7-ml-fts"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="Pcv-7B-hWk" userLabel="Header View">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-z8-d0d" userLabel="Flag Button">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <state key="normal" image="flag"/>
+                                            <connections>
+                                                <action selector="headerAction:" destination="YgD-Xi-cHP" eventType="touchDown" id="5Qd-RV-O3Q"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="3cm-z8-d0d" firstAttribute="leading" secondItem="Pcv-7B-hWk" secondAttribute="leading" id="4Ou-BR-BXy"/>
+                                        <constraint firstItem="3cm-z8-d0d" firstAttribute="top" secondItem="Pcv-7B-hWk" secondAttribute="top" id="SnH-vZ-4tU"/>
+                                        <constraint firstAttribute="trailing" secondItem="3cm-z8-d0d" secondAttribute="trailing" id="a8q-Eo-com"/>
+                                        <constraint firstAttribute="bottom" secondItem="3cm-z8-d0d" secondAttribute="bottom" id="ctp-3I-Hmh"/>
+                                    </constraints>
+                                </view>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Es6-dZ-zY2" userLabel="Location Button">
-                                <rect key="frame" x="309.5" y="553" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="65u-uU-zfV"/>
-                                    <constraint firstAttribute="width" constant="50" id="V7N-Ga-gdT"/>
-                                </constraints>
-                                <state key="normal" image="ico-mylocation"/>
-                                <connections>
-                                    <action selector="myLocationAction:" destination="YgD-Xi-cHP" eventType="touchDown" id="wkP-2h-TNM"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Places..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HfY-gK-Ksi">
                                 <rect key="frame" x="20" y="84" width="305" height="30"/>
                                 <nil key="textColor"/>
@@ -63,18 +78,29 @@
                                     <action selector="searchAction:" destination="YgD-Xi-cHP" eventType="touchDown" id="6Iq-I7-8z0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Es6-dZ-zY2" userLabel="Location Button">
+                                <rect key="frame" x="310" y="512" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="65u-uU-zfV"/>
+                                    <constraint firstAttribute="width" constant="50" id="V7N-Ga-gdT"/>
+                                </constraints>
+                                <state key="normal" image="ico-mylocation"/>
+                                <connections>
+                                    <action selector="myLocationAction:" destination="YgD-Xi-cHP" eventType="touchDown" id="wkP-2h-TNM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4dY-Fp-puK" firstAttribute="trailing" secondItem="82L-JQ-WWk" secondAttribute="trailing" constant="20" id="6yM-Xy-dr9"/>
+                            <constraint firstItem="4dY-Fp-puK" firstAttribute="trailing" secondItem="82L-JQ-WWk" secondAttribute="trailing" id="6yM-Xy-dr9"/>
                             <constraint firstItem="4dY-Fp-puK" firstAttribute="trailing" secondItem="Es6-dZ-zY2" secondAttribute="trailing" constant="15" id="8w0-to-GYa"/>
                             <constraint firstItem="I2j-v6-BAT" firstAttribute="leading" secondItem="HfY-gK-Ksi" secondAttribute="trailing" constant="5" id="D3d-3c-4ww"/>
+                            <constraint firstItem="82L-JQ-WWk" firstAttribute="top" secondItem="Es6-dZ-zY2" secondAttribute="bottom" constant="16" id="Fuo-K4-rTo"/>
                             <constraint firstItem="4dY-Fp-puK" firstAttribute="trailing" secondItem="I2j-v6-BAT" secondAttribute="trailing" constant="15" id="G0N-IE-m1m"/>
                             <constraint firstItem="HfY-gK-Ksi" firstAttribute="top" secondItem="4dY-Fp-puK" secondAttribute="top" constant="20" id="I9W-Gu-9O3"/>
                             <constraint firstItem="HfY-gK-Ksi" firstAttribute="leading" secondItem="4dY-Fp-puK" secondAttribute="leading" constant="20" id="JsY-Vi-XcX"/>
-                            <constraint firstItem="4dY-Fp-puK" firstAttribute="bottom" secondItem="Es6-dZ-zY2" secondAttribute="bottom" constant="15" id="L8J-xd-yfA"/>
                             <constraint firstItem="82L-JQ-WWk" firstAttribute="bottom" secondItem="4dY-Fp-puK" secondAttribute="bottom" id="NtP-jJ-Hk6"/>
-                            <constraint firstItem="82L-JQ-WWk" firstAttribute="leading" secondItem="4dY-Fp-puK" secondAttribute="leading" constant="20" id="Rbm-s5-uxi"/>
+                            <constraint firstItem="82L-JQ-WWk" firstAttribute="leading" secondItem="4dY-Fp-puK" secondAttribute="leading" id="Rbm-s5-uxi"/>
                             <constraint firstItem="30C-Ib-rKb" firstAttribute="leading" secondItem="4dY-Fp-puK" secondAttribute="leading" id="br2-1Z-DMc"/>
                             <constraint firstItem="30C-Ib-rKb" firstAttribute="bottom" secondItem="4dY-Fp-puK" secondAttribute="bottom" id="cUx-b5-inq"/>
                             <constraint firstItem="30C-Ib-rKb" firstAttribute="top" secondItem="4dY-Fp-puK" secondAttribute="top" id="gTs-CT-6d6"/>
@@ -87,6 +113,7 @@
                     <connections>
                         <outlet property="mapView" destination="30C-Ib-rKb" id="qcu-4K-jet"/>
                         <outlet property="searchTextField" destination="HfY-gK-Ksi" id="I28-km-oW4"/>
+                        <outlet property="tableHeightConstraint" destination="VGJ-0K-Plr" id="SZI-uG-FQP"/>
                         <outlet property="tableView" destination="82L-JQ-WWk" id="rzb-pF-iLy"/>
                         <segue destination="HIZ-HO-nAs" kind="show" identifier="PlaceDetailViewControllerSegueID" id="qW7-uM-e7b"/>
                     </connections>
@@ -217,6 +244,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="flag" width="32" height="32"/>
         <image name="ico-mylocation" width="51" height="51"/>
         <image name="search" width="24" height="24"/>
         <image name="searchfilled" width="24" height="24"/>
